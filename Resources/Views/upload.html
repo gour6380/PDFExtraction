@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="application/pdf" id="pdfFile" onchange="checkFile()">
+    <input type="password" name="password" placeholder="Password (optional)" id="password">
+    <input type="submit" value="Upload" id="submitBtn" disabled>
+</form>
+
+<script>
+    function checkFile() {
+        var fileInput = document.getElementById('pdfFile');
+        var submitBtn = document.getElementById('submitBtn');
+        var filePath = fileInput.value;
+
+        // Extract the file extension and check if it is 'pdf'.
+        var allowedExtensions = /(\.pdf)$/i;
+        if (!allowedExtensions.exec(filePath)) {
+            submitBtn.disabled = true;
+        } else {
+            submitBtn.disabled = false;
+        }
+    }
+</script>
+</body>
+</html>
